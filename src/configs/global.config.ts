@@ -11,4 +11,7 @@ export const {
   MONGO_PASSWORD,
   MONGO_PORT,
   MONGO_USERNAME,
+  QUEUE_NAME,
+  REDIS_HOST,
+  REDIS_PORT,
 } = process.env;
