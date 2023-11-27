@@ -26,8 +26,11 @@
     "@nestjs/swagger": "^7.1.16",
     "dotenv": "^16.3.1",
     "express-basic-auth": "^1.2.1",
+    "nest-winston": "^1.9.4",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "winston": "^3.11.0",
+    "winston-daily-rotate-file": "^4.7.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",
