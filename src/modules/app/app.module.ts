@@ -8,6 +8,7 @@ import { BullModule } from '@nestjs/bullmq';
 import { QUEUE_NAME, REDIS_HOST, REDIS_PORT } from 'src/configs/global.config';
 import { ImageUploadProcessor } from 'src/bullMQ/image-upload.processor';
 import { ImageUploadEventsListener } from 'src/bullMQ/image-upload.eventsListener';
+import { UploaderModule } from '../uploader/uploader.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { ImageUploadEventsListener } from 'src/bullMQ/image-upload.eventsListene
         port: Number(REDIS_PORT),
       },
     }),
+    UploaderModule,
   ],
   controllers: [AppController],
   providers: [AppService, ImageUploadProcessor, ImageUploadEventsListener],
