@@ -4,6 +4,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Queue } from 'bull';
 import { v2 as cloudinary } from 'cloudinary';
 import { Model } from 'mongoose';
+import { IQueueObject } from 'src/common/interfaces/queue-object.interface';
 import { UploadImages } from 'src/common/schemas/uploadImages.schema';
 import { QUEUE_NAME } from 'src/configs/global.config';
 
@@ -21,7 +22,7 @@ export class UploaderService {
       width,
       height,
     });
-    const data = {
+    const data: IQueueObject = {
       objectId: newObject._id,
       imagePath: file.path,
       width,
@@ -30,7 +31,7 @@ export class UploaderService {
     this.bullQueue.add('upload', data);
   }
 
-  async uploadOnCloudinary(data): Promise<void> {
+  async uploadOnCloudinary(data: IQueueObject): Promise<void> {
     const result = await cloudinary.uploader.upload(data.imagePath, {
       width: data.width,
       height: data.height,
