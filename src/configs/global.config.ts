@@ -14,4 +14,9 @@ export const {
   QUEUE_NAME,
   REDIS_HOST,
   REDIS_PORT,
+  CLOUDINARY_CLOUD_NAME,
+  CLOUDINARY_API_KEY,
+  CLOUDINARY_API_SECRET,
 } = process.env;
+
+export const CLOUDINARY = 'Cloudinary';

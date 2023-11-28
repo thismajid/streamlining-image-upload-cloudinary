@@ -1,4 +1,5 @@
 import {
+  Body,
   Controller,
   Post,
   UploadedFile,
@@ -29,7 +30,17 @@ export class UploaderController {
   @ApiBody({
     schema: {
       type: 'object',
+      required: ['file'],
       properties: {
+        filename: {
+          type: 'string',
+        },
+        width: {
+          type: 'number',
+        },
+        height: {
+          type: 'number',
+        },
         file: {
           type: 'string',
           format: 'binary',
@@ -38,7 +49,7 @@ export class UploaderController {
     },
   })
   @UseInterceptors(FileInterceptor('file'))
-  uploadFile(@UploadedFile() file: Express.Multer.File) {
-    this.uploaderService.uploadFile(file);
+  uploadFile(@UploadedFile() file: Express.Multer.File, @Body() body) {
+    this.uploaderService.uploadFile({ file, ...body });
   }
 }

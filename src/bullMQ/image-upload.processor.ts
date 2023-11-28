@@ -10,6 +10,6 @@ export class ImageUploadProcessor extends WorkerHost {
   }
 
   async process(job: Job<any>): Promise<any> {
-    await this.uploaderService.uploadOnCloudinary({ ...job });
+    await this.uploaderService.uploadOnCloudinary(job.data);
   }
 }
