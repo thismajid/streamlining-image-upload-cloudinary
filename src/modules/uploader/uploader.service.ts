@@ -1,26 +1,15 @@
+import { InjectQueue } from '@nestjs/bullmq';
 import { Injectable } from '@nestjs/common';
+import { QUEUE_NAME } from 'src/configs/global.config';
+import { Queue } from 'bull';
 
 @Injectable()
 export class UploaderService {
+  constructor(@InjectQueue(QUEUE_NAME) readonly bullQueue: Queue) {}
+
   async uploadFile(file): Promise<any> {
-    // const fileExtension = this.getFileExtension(file.originalname);
-    // const fileName = `${uuidv4()}.${fileExtension}`;
-    // const params = {
-    //   Bucket: this.aws_bucket,
-    //   Key: fileName,
-    //   Body: file.buffer,
-    // };
-    // const s3Response = await this.s3.upload(params).promise();
-    // return {
-    //   fieldname: file.fieldname,
-    //   originalname: file.originalname,
-    //   encoding: file.encoding,
-    //   mimetype: file.mimetype,
-    //   size: file.size,
-    //   bucket: s3Response.Bucket,
-    //   key: fileName,
-    //   location: s3Response.Location,
-    //   url: `${this.base_url}/v1/client/uploader/_/${s3Response.Bucket}/${fileName}`,
-    // };
+    this.bullQueue.add('upload', file);
   }
+
+  async uploadOnCloudinary({ data }) {}
 }

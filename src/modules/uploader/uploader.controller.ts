@@ -39,8 +39,6 @@ export class UploaderController {
   })
   @UseInterceptors(FileInterceptor('file'))
   uploadFile(@UploadedFile() file: Express.Multer.File) {
-    console.log(file.path);
-
-    return this.uploaderService.uploadFile(file);
+    this.uploaderService.uploadFile(file);
   }
 }
