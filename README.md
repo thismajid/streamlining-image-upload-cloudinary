@@ -1,4 +1,4 @@
-# Streamlining Image Upload with Cloudinary
+# NestJS Cloudinary Image Upload Streamliner
 
 This repository showcases a method for simplifying the image upload process to Cloudinary. It provides a set of tools and examples to help developers integrate Cloudinary's image management features into their web applications.
 
